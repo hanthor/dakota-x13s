@@ -20,9 +20,8 @@ RUN mkdir -p /pkgs && \
         qcom-firmware \
         pd-mapper \
         x13s && \
-    cd /pkgs && \
-    for rpm in *.rpm; do \
-        echo "Extracting: $rpm" && rpm2cpio "$rpm" | cpio -idmv 2>/dev/null; \
+    for rpm in /pkgs/*.rpm; do \
+        echo "Extracting: $rpm" && cd / && rpm2cpio "$rpm" | cpio -idmv 2>/dev/null; \
     done && \
     dnf clean all
 
