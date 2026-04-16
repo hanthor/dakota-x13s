@@ -12,7 +12,7 @@
 
 # ── Stage 1: Install X13s packages from jlinton/x13s COPR into Fedora ────────
 # Files are then selectively COPYed into the GNOME OS layer below.
-FROM --platform=linux/arm64 fedora:42 AS x13s-extracted
+FROM --platform=linux/arm64 fedora:40 AS x13s-extracted
 
 RUN dnf -y copr enable jlinton/x13s && \
     dnf -y install \
