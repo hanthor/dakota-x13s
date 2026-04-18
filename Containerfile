@@ -14,7 +14,8 @@
 # Files are then selectively COPYed into the GNOME OS layer below.
 FROM --platform=linux/arm64 fedora:40 AS x13s-extracted
 
-RUN dnf -y copr enable jlinton/x13s && \
+RUN dnf -y install dnf5-plugins && \
+    dnf -y copr enable jlinton/x13s && \
     dnf -y install \
         qcom-firmware \
         pd-mapper \
