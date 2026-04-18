@@ -41,7 +41,15 @@ iso-sd-boot:
     #!/usr/bin/bash
     set -euo pipefail
 
+    echo "=== df before container build ===" && df -h
     just debug={{debug}} installer_channel={{installer_channel}} container
+    echo "=== df after container build ===" && df -h
+
+    # Free intermediate layers: keeps x13s-installer, removes debian:sid,
+    # fedora:42, and dangling build cache from the multi-stage build.
+    podman image prune -f
+    echo "=== df after image prune ===" && df -h
+
     mkdir -p {{output_dir}}
     OUTPUT_DIR=$(realpath "{{output_dir}}")
 
@@ -89,8 +97,10 @@ iso-sd-boot:
             oci-archive:\${PAYLOAD_OCI}:${PAYLOAD_REF} \
             containers-storage:${PAYLOAD_REF}
 
+        # Remove OCI tar immediately after import — it's the largest temp file
         rm -f \"\${PAYLOAD_OCI}\" \"\${STORAGE_CONF}\"
         rm -rf \"\${LIVE_RUNROOT}\"
+        echo \"=== df after OCI import (before squashfs copy) ===\" && df -h
 
         echo 'Building unified squashfs source tree...'
         mkdir -p \"\${SQUASHFS_ROOT}\"

@@ -69,10 +69,12 @@ jobs:
 
       - name: Build ISO
         run: |
+          echo "=== df at start of ISO build ===" && df -h
           sudo just \
             installer_channel=dev \
             output_dir=output \
             iso-sd-boot
+          echo "=== df after ISO build ===" && df -h
 
       - name: Generate checksums
         run: |
