@@ -39,8 +39,7 @@ jobs:
       - name: Free disk space
         run: |
           sudo apt-get remove -y '^dotnet' '^mysql' '^postgresql' '^ghc' \
-            '^libgcc-' '^libstdc' '^llvm' 'php.*' '^ruby' '^g\+\+' \
-            '^gcc-' '^cpp-' || true
+            '^libgcc-' '^libstdc' '^llvm' 'php.*' '^ruby' '^gcc-' '^cpp-' || true
           sudo apt-get autoremove -y
           sudo apt-get clean
           sudo rm -rf \
@@ -50,14 +49,14 @@ jobs:
             /usr/local/lib/android \
             /usr/local/share/powershell \
             /usr/share/doc \
-            /usr/share/man \
-            /var/lib/apt/lists/*
+            /usr/share/man
           df -h
 
       - name: Install dependencies
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh \
             | bash -s -- --to /usr/local/bin
+          sudo apt-get update
           sudo apt-get install -y podman rclone mtools xorriso squashfs-tools \
             dosfstools rsync
 
