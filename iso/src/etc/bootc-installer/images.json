@@ -1,10 +1,10 @@
 {
-  "default_image": "ghcr.io/hanthor/dakota-x13s:latest",
+  "default_image": "ghcr.io/tuna-os/dakota-x13s:latest",
   "fallback_flatpaks": [],
   "images": [
     {
       "name": "Dakota (ThinkPad X13s)",
-      "imgref": "ghcr.io/hanthor/dakota-x13s:latest",
+      "imgref": "ghcr.io/tuna-os/dakota-x13s:latest",
       "desc": "Project Bluefin Dakota on GNOME OS, optimized for the Lenovo ThinkPad X13s (Qualcomm SC8280XP).",
       "bootloader": "systemd",
       "filesystem": "btrfs",

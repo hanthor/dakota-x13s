@@ -8,7 +8,7 @@
 #   podman build --platform linux/arm64 -t dakota-x13s .
 #
 # Switch a running bootc system:
-#   sudo bootc switch ghcr.io/hanthor/dakota-x13s:latest
+#   sudo bootc switch ghcr.io/tuna-os/dakota-x13s:latest
 
 # ── Stage 1: Extract X13s files from standard Fedora packages ────────────────
 # linux-firmware ships SC8280XP blobs. pd-mapper was retired from Fedora after

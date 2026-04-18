@@ -15,7 +15,7 @@
 # The ISO bootloader is systemd-boot (systemd-bootaa64.efi already in the image).
 
 # ── Stage 1: dakota-x13s reference (kernel modules + DTB source) ─────────────
-FROM ghcr.io/hanthor/dakota-x13s:latest AS dakota-ref
+FROM ghcr.io/tuna-os/dakota-x13s:latest AS dakota-ref
 
 # ── Stage 2: Debian arm64 — builds the dmsquash-live initramfs ───────────────
 FROM --platform=linux/arm64 debian:sid AS initramfs-builder
@@ -39,7 +39,7 @@ RUN set -ex; \
     ls -lh /tmp/initramfs.img
 
 # ── Stage 3: Final dakota-x13s live image ────────────────────────────────────
-FROM ghcr.io/hanthor/dakota-x13s:latest
+FROM ghcr.io/tuna-os/dakota-x13s:latest
 
 ARG INSTALLER_CHANNEL=stable
 ENV INSTALLER_CHANNEL=${INSTALLER_CHANNEL}
