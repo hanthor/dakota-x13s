@@ -34,6 +34,6 @@ org.gnome.clocks
 org.gnome.font-viewer
 org.gtk.Gtk3theme.adw-gtk3
 org.gtk.Gtk3theme.adw-gtk3-dark
-org.mozilla.Thunderbird
-org.mozilla.firefox
+# org.mozilla.Thunderbird — no aarch64 flatpak build on flathub
+# org.mozilla.firefox    — no aarch64 flatpak build on flathub
 page.tesk.Refine
