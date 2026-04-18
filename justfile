@@ -106,9 +106,9 @@ iso-sd-boot:
         mkdir -p \"\${SQUASHFS_ROOT}\"
         cp -a --reflink=auto \"\${MOUNT}/.\" \"\${SQUASHFS_ROOT}/\" 2>/dev/null || \
             cp -a \"\${MOUNT}/.\" \"\${SQUASHFS_ROOT}/\"
-        mkdir -p \"\${SQUASHFS_ROOT}/var/lib/containers/storage\"
-        cp -a \"\${CS_STAGING}/var/lib/containers/storage/.\" \
-            \"\${SQUASHFS_ROOT}/var/lib/containers/storage/\"
+        mkdir -p \"\${SQUASHFS_ROOT}/var/lib/containers\"
+        mv \"\${CS_STAGING}/var/lib/containers/storage\" \
+            \"\${SQUASHFS_ROOT}/var/lib/containers/storage\"
         rm -rf \"\${CS_STAGING}\"
 
         SFS_LEVEL=3; SFS_BLOCK=131072
