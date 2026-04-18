@@ -164,7 +164,16 @@ sort-key   02
 linux      /boot/aarch64/vmlinuz
 initrd     /boot/aarch64/initramfs.img
 ${DTB_LINE}
-options    root=live:CDLABEL=${LABEL} rd.live.image efi=noruntime arm64.nopauth clk_ignore_unused pd_ignore_unused enforcing=0 audit=0 plymouth.enable=0 rd.shell
+options    root=live:CDLABEL=${LABEL} rd.live.image efi=noruntime arm64.nopauth clk_ignore_unused pd_ignore_unused enforcing=0 audit=0 plymouth.enable=0 rd.shell systemd.log_level=debug systemd.log_target=console
+ENTRYEOF
+
+cat > "${ISO_ROOT}/loader/entries/x13s-nomodeset.conf" << ENTRYEOF
+title      Dakota X13s (nomodeset)
+sort-key   03
+linux      /boot/aarch64/vmlinuz
+initrd     /boot/aarch64/initramfs.img
+${DTB_LINE}
+options    root=live:CDLABEL=${LABEL} rd.live.image rd.live.overlay.thin efi=noruntime arm64.nopauth clk_ignore_unused pd_ignore_unused enforcing=0 audit=0 plymouth.enable=0 nomodeset
 ENTRYEOF
 
 # ─────────────────────────────────────────────────────────────────────────────
