@@ -14,8 +14,9 @@
 # Files are then selectively COPYed into the GNOME OS layer below.
 FROM --platform=linux/arm64 fedora:40 AS x13s-extracted
 
-RUN dnf -y install dnf5-plugins && \
-    dnf -y copr enable jlinton/x13s && \
+RUN curl -fsSL \
+        https://copr.fedorainfracloud.org/coprs/jlinton/x13s/repo/fedora-40/jlinton-x13s-fedora-40.repo \
+        -o /etc/yum.repos.d/jlinton-x13s.repo && \
     dnf -y install \
         qcom-firmware \
         pd-mapper \
