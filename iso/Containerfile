@@ -57,7 +57,6 @@ RUN set -ex; \
         --add "dmsquash-live" \
         --add-drivers "squashfs overlay loop iso9660 sr_mod cdrom" \
         --add-drivers "msm" \
-        --firmware-dir /usr/lib/firmware \
         /tmp/initramfs.img "${kernel}"; \
     ls -lh /tmp/initramfs.img
 
